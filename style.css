@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&display=swap');
+
+* {
+  margin: 0;
+}
+
+body {
+  background: #252525;
+}
+
+.slider {
+  --slide-width: 250px;
+  height: fit-content;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, #252525 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(var(--slide-width) * 14);
+}
+
+.slider .slide {
+  height: fit-content;
+  width: var(--slide-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc((var(--slide-width) * -1) * 7));
+  }
+}
+
+.slide img {
+  width: 80%;
+  aspect-ratio: 1;
+}
+
+.slide span {
+  color: #e1e1e1;
+  font-family: Montserrat, sans-serif;
+  align-self: flex-start;
+}
+
+.slide > .nome-musica {
+  font-weight: bold;
+}
+
+.slide > .artista {
+  font-weight: thin;
+}
